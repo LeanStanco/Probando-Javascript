@@ -1,0 +1,11 @@
+@keyframes mover{
+    0%{
+        transform: translate(60%);
+    }
+ }
+
+ @keyframes mover2{
+    0%{
+        transform: translate(-60%);
+    }
+ }

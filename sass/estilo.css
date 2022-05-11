@@ -1,0 +1,81 @@
+@import url("https://use.typekit.net/veg4rxm.css");
+@import url("https://use.typekit.net/veg4rxm.css");
+#body {
+  padding: 0;
+  grid-auto-flow: column;
+}
+#body a {
+  text-decoration: none;
+  color: black;
+}
+#body a:hover {
+  background-color: transparent;
+}
+
+#menu {
+  background-color: white;
+  opacity: 80%;
+}
+
+#segundaCol {
+  margin-top: 1rem;
+  display: gap;
+  gap: 0;
+}
+
+img {
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  width: 100%;
+  height: auto;
+  padding-bottom: 2em;
+}
+
+.position-sm-fixed {
+  display: flex;
+  position: fixed;
+}
+
+.navbar {
+  display: flex;
+  position: fixed !important;
+}
+
+@media (max-width: 820px) {
+  .position-sm-fixed {
+    position: relative !important;
+  }
+
+  nav.navbar {
+    position: static !important;
+  }
+}
+@-webkit-keyframes mover {
+  0% {
+    transform: translate(60%);
+  }
+}
+@keyframes mover {
+  0% {
+    transform: translate(60%);
+  }
+}
+@-webkit-keyframes mover2 {
+  0% {
+    transform: translate(-60%);
+  }
+}
+@keyframes mover2 {
+  0% {
+    transform: translate(-60%);
+  }
+}
+h3 {
+  font-family: mrs-eaves, serif;
+}
+
+h1 {
+  font-family: gin, sefif;
+  font-weight: 600;
+  font-style: normal;
+}/*# sourceMappingURL=estilo.css.map */
