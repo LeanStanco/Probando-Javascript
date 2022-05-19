@@ -21,7 +21,7 @@ window.addEventListener('scroll', function(){
 
 /** imput */
 const book = 12000
- const retrato = 1000
+const retrato = 1000
 
 let btnEnviar = document.getElementById("btnEnviar");
 
@@ -71,15 +71,19 @@ localStorage.setItem("nombreUsuario", nombres);
                         return retrato * parseInt(pregunta1);
                     }
                  };
-           
-        
-                             //* precio de los tipos de fotografia**/
-                  
+                                   
         /* fin del presupuesto*/
         
+
         /** horarios jornada */
         let jornada = ["2hs", "4hs","8hs"]
+        
+        //* operador SPREAD
+
+        console.log(...jornada);
+        
         /** jornada segun cantidad de fotos */
+        
         function duracion(pregunta1) {
             if ( (pregunta1 <= 15)){
                 return jornada[0];
@@ -95,19 +99,26 @@ localStorage.setItem("nombreUsuario", nombres);
            duracion : duracion(pregunta1),
            precio : cantidadDeFotos(pregunta1) 
         };
-        
-        
         console.log(PresupuestoDetallado);
+        //* OPERADOR SPREAD CON OBJETOS
+        let PresupuestoCompleto = {
+            ...PresupuestoDetallado,
+            viaticos: "3000",
+            asistente: "5000" 
+        }
+        console.log(PresupuestoCompleto)
+        
         
         localStorage.getItem("ultimoPreDetallado",JSON.stringify(PresupuestoDetallado));
+
+        //* optimizando codigo. operador ternario
 
         mostrar.addEventListener('click',(e) => {
             e.preventDefault();
             console.log(e.target);
-        if(e.target.classList.contains('detallado')){
-            divDetallado.innerHTML = `<h3>${JSON.stringify(PresupuestoDetallado)}" </h3>`;
-             /*   console.log("cliqueaste en Presupuesto detallado") */ }
-                else { console.log("nada")};
+        e.target.classList.contains('detallado')?
+            divDetallado.innerHTML = `<h3>${JSON.stringify(PresupuestoDetallado)}" </h3>`:
+            console.log("nada");
              } )
             
              function recordarCfotos (){
@@ -119,8 +130,13 @@ localStorage.setItem("nombreUsuario", nombres);
          
       const divDetallado = document.getElementById("presupuesto");
 
-     
-      
+      //* probando toastify*//
 
-/*let mostrar = document.getElementById("resultado");
-    mostrar.innerHTML = JSON.stringify(PresupuestoDetallado);*/
+      Toastify({
+        text: "Bienvenido",
+        className: "info",
+        style: {
+          background: "linear-gradient(to right,#ff0844 0%, #ffb199 100%)",
+        }
+      }).showToast();
+      
