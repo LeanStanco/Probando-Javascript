@@ -19,7 +19,7 @@ window.addEventListener('scroll', function(){
     }
 })
 
-/** imput */
+/** input */
 const book = 12000
 const retrato = 1000
 
@@ -99,6 +99,7 @@ localStorage.setItem("nombreUsuario", nombres);
            duracion : duracion(pregunta1),
            precio : cantidadDeFotos(pregunta1) 
         };
+       
         console.log(PresupuestoDetallado);
         //* OPERADOR SPREAD CON OBJETOS
         let PresupuestoCompleto = {
@@ -108,8 +109,9 @@ localStorage.setItem("nombreUsuario", nombres);
         }
         console.log(PresupuestoCompleto)
         
-        
-        localStorage.getItem("ultimoPreDetallado",JSON.stringify(PresupuestoDetallado));
+        //*guardar ultimo presupuesto detallado en localstorage
+
+        localStorage.setItem("ultimoPreDetallado",JSON.stringify(PresupuestoDetallado));
 
         //* optimizando codigo. operador ternario
 
@@ -125,7 +127,7 @@ localStorage.setItem("nombreUsuario", nombres);
                 return divDetallado.innerHTML(`${JSON.stringify(canFotos)}`),
                 console.log(canFotos);
             }
-             
+            let guardaPresupuesto = todosLosPresupuestosDados.push( JSON.parse(presupuestoGuardado));
       });
          
       const divDetallado = document.getElementById("presupuesto");
@@ -149,4 +151,5 @@ fetch(`${API_URL}/users`).then((response)=> response.json()).then((users)=>{
     HTMLResponse.innerHTML = `<ul>${tpl}</ul>` 
 });
 
-
+let presupuestoGuardado = localStorage.getItem("ultimoPreDetallado");
+let todosLosPresupuestosDados =[] ;
