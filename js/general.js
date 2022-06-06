@@ -111,7 +111,7 @@ localStorage.setItem("nombreUsuario", nombres);
         
         //*guardar ultimo presupuesto detallado en localstorage
 
-        localStorage.setItem("ultimoPreDetallado",JSON.stringify(PresupuestoDetallado));
+     localStorage.setItem("ultimoPreDetallado",JSON.stringify(PresupuestoDetallado));
 
         //* optimizando codigo. operador ternario
 
@@ -127,7 +127,7 @@ localStorage.setItem("nombreUsuario", nombres);
                 return divDetallado.innerHTML(`${JSON.stringify(canFotos)}`),
                 console.log(canFotos);
             }
-            let guardaPresupuesto = todosLosPresupuestosDados.push( JSON.parse(presupuestoGuardado));
+            let guardaPresupuesto = todosLosPresupuestosDados.push(JSON.parse(presupuestoGuardado));
       });
          
       const divDetallado = document.getElementById("presupuesto");
@@ -152,4 +152,5 @@ fetch(`${API_URL}/users`).then((response)=> response.json()).then((users)=>{
 });
 
 let presupuestoGuardado = localStorage.getItem("ultimoPreDetallado");
+;
 let todosLosPresupuestosDados =[] ;
