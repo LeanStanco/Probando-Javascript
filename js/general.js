@@ -30,7 +30,7 @@ btnEnviar.addEventListener('click',function(e){
     let pregunta1 =  document.getElementById("pregunta1").value;
 
     let nombres = document.getElementById("pregunta2").value;
-    while(  Number(nombres) || nombres == " "  ) {
+    while(  Number(nombres) || nombres === " "  ) {
         nombres = document.getElementById("resultado").innerHTML = '<h3 class="text-danger">Inserte nombre ( solo letras )</h3>'
     }
     
@@ -41,7 +41,7 @@ localStorage.setItem("nombreUsuario", nombres);
  localStorage.setItem("cantidadDeFotos", pregunta1); 
 (()=>{
     const canFotos = localStorage.getItem("cantidadDeFotos")
-    if( canFotos === 0 || canFotos == "" ){
+    if( canFotos === 0 || canFotos === "" ){
         return  canFotos === Number(15);
             }
 })();
@@ -61,7 +61,7 @@ localStorage.setItem("nombreUsuario", nombres);
             let presupuesto = "Este es el monto total a pagar"+ " "+ cantidadDeFotos(pregunta1);
            
             let mostrar = document.getElementById("resultado");
-            mostrar.innerHTML = `<h3>hola  ${nombres},<br> ${presupuesto}</h3> <br><br> <button class="detallado"> <h1 class="detallado">Presupuesto detallado</h1> </button>` ; 
+            mostrar.innerHTML = `<h3>hola  ${nombres},<br> ${presupuesto}</h3> <br><br> <button class="detallado"> <h1 class="detallado">Presupuesto detallado</h1> </button > <br> <button class="ultimoPresupuesto btn btn-danger"> Consulta Ultimo presupuesto </button>` ; 
 
             function cantidadDeFotos(pregunta1){
 
@@ -119,19 +119,22 @@ localStorage.setItem("nombreUsuario", nombres);
             e.preventDefault();
             console.log(e.target);
         e.target.classList.contains('detallado')?
-            divDetallado.innerHTML = `<h3>${JSON.stringify(PresupuestoDetallado)}" </h3>`:
+            divDetallado.innerHTML = `<br> <h3>${JSON.stringify(PresupuestoDetallado)}" </h3> <br> <br>`:
             console.log("nada");
              } )
             
-             function recordarCfotos (){
-                return divDetallado.innerHTML(`${JSON.stringify(canFotos)}`),
-                console.log(canFotos);
-            }
-            let guardaPresupuesto = todosLosPresupuestosDados.push(JSON.parse(presupuestoGuardado));
+             mostrar.addEventListener('click',(e) => {
+                e.preventDefault();
+                console.log(e.target);
+            e.target.classList.contains('ultimoPresupuesto')?
+                divDetallado.innerHTML = `<br> <h3>${JSON.stringify(presupuestoGuardado)}" </h3> <br> <br>`:
+                console.log("nada");
+                 } )
+            let guardaPresupuesto = ultimoPresupuestoDado.push(JSON.parse(presupuestoGuardado));
       });
          
       const divDetallado = document.getElementById("presupuesto");
-
+ const UltimaSolicitud = document.getElementById("ultimo")
       //* probando toastify*//
 
       Toastify({
@@ -151,6 +154,7 @@ fetch(`${API_URL}/users`).then((response)=> response.json()).then((users)=>{
     HTMLResponse.innerHTML = `<ul>${tpl}</ul>` 
 });
 
+//* guardando ultomo 
 let presupuestoGuardado = localStorage.getItem("ultimoPreDetallado");
 ;
-let todosLosPresupuestosDados =[] ;
+let ultimoPresupuestoDado =[] ;
